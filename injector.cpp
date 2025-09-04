@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <windows.h>
 #include <stdlib.h>
-#include "include/aes.hpp"
+#include "include/aes.h"
 
 
 int main(int argc, char* argv[]) {
