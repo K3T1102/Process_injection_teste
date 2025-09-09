@@ -2,6 +2,7 @@
 #include <windows.h>
 #include "include/aes.h"
 #include "include/injection.h"
+// versão 2.1.0
 #include "include/lazy_importer.hpp"
 
 BOOL ShellcodeInjection( _In_ DWORD PID, _In_ PBYTE Payload, _In_ SIZE_T PayloadSize) {
